@@ -1,1 +1,4 @@
 rootProject.name = 'pos'
+
+include 'pos-domain'
+include 'pos-rest'
