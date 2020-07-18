@@ -8,14 +8,9 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-public class Product extends AbstractEntity {
+public class Category extends AbstractEntity {
 
     private String name;
-    private Integer price;
-    private String description;
-    private String image;
-    private Category category;
 
 }
