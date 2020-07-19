@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -14,7 +15,9 @@ import javax.persistence.Entity;
 @Entity
 public class BasketItem extends AbstractEntity {
 
+    @OneToOne
     private Product product;
+
     private int quantity;
 
 }

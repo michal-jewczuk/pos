@@ -2,7 +2,7 @@ package net.jewczuk.posdomain.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,6 +16,9 @@ public class Product extends AbstractEntity {
     private Integer price;
     private String description;
     private String image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
 }
