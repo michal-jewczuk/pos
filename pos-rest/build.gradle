@@ -5,4 +5,8 @@ plugins {
 
 dependencies {
     api project(':pos-domain')
+
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+
 }
