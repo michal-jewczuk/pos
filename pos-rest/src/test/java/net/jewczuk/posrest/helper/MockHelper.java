@@ -17,22 +17,32 @@ public enum MockHelper {
                 .id(1L)
                 .name("Product 1")
                 .price(1000)
+                .description("")
+                .image("")
                 .category(categories.get(0))
                 .build();
         ProductDto p2 = ProductDto.builder()
                 .id(2L)
                 .name("Product 2")
                 .price(2500)
+                .description("")
+                .image("")
                 .category(categories.get(1))
                 .build();
         ProductDto p3 = ProductDto.builder()
                 .id(3L)
                 .name("Product 3")
+                .description("")
+                .image("")
                 .price(12300)
                 .category(categories.get(0))
                 .build();
 
         return Arrays.asList(p1, p2, p3);
+    }
+
+    public ProductDto getMockedProduct(int index) {
+        return getMockedProducts().get(index);
     }
 
     public List<CategoryDto> getMockedCategories() {
