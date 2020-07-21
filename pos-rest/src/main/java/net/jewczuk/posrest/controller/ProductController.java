@@ -2,6 +2,7 @@ package net.jewczuk.posrest.controller;
 
 import lombok.RequiredArgsConstructor;
 import net.jewczuk.posrest.dto.ProductDto;
+import net.jewczuk.posrest.exception.BadRequestException;
 import net.jewczuk.posrest.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,15 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ProductDto getSingleProduct(@PathVariable String id) {
-        Long productId = Long.parseLong(id);
+        // id is a String so that we can throw our own exception
+        // when user enters not a number
+        Long productId;
+
+        try {
+            productId = Long.parseLong(id);
+        } catch (Exception ex) {
+            throw new BadRequestException();
+        }
 
         return productService.getProductById(productId);
     }
