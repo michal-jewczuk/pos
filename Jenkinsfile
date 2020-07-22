@@ -11,7 +11,7 @@ pipeline {
     stage('Tests') {
       steps {
         echo 'Running unit tests'
-        sh './gradlew test'
+        sh './gradlew check'
       }
     }
 
