@@ -11,12 +11,13 @@ pipeline {
     stage('Tests') {
       steps {
         echo 'Running unit tests'
-        sh './gradlew check'
+        sh './gradlew check jacocoTestReport'
       }
 
       post {
         always {
           junit '**/build/test-results/test/TEST-*.xml'
+	  publishHTML(target: [reportDir:'**/build/jacocoHtml', reportFiles: 'index.html', reportName: 'Code Coverage'])
         }
       }
     }
