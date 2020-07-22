@@ -17,7 +17,7 @@ pipeline {
       post {
         always {
           junit '**/build/test-results/test/TEST-*.xml'
-	  publishHTML(target: [reportDir:'**/build/jacocoHtml', reportFiles: 'index.html', reportName: 'Code Coverage'])
+	  publishHTML(target: [reportDir:'/build/jacocoHtml', reportFiles: 'index.html', reportName: 'Code Coverage'])
         }
       }
     }
