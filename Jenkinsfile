@@ -13,12 +13,7 @@ pipeline {
         echo 'Running unit tests'
         sh './gradlew check jacocoTestReport'
 
-	step([$class: 'JacocoPublisher',
-            execPattern: 'build/*.exec',
-            classPattern: 'build/classes',
-            sourcePattern: 'src/main/java',
-            exclusionPattern: 'src/test*'
-        ])
+	step([$class: 'JacocoPublisher'])
       }
 
       post {
