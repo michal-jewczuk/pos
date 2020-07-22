@@ -12,12 +12,18 @@ pipeline {
       steps {
         echo 'Running unit tests'
         sh './gradlew check jacocoTestReport'
+
+	step([$class: 'JacocoPublisher',
+            execPattern: 'target/*.exec',
+            classPattern: 'target/classes',
+            sourcePattern: 'src/main/java',
+            exclusionPattern: 'src/test*'
+        ])
       }
 
       post {
         always {
           junit '**/build/test-results/test/TEST-*.xml'
-	  publishHTML(target: [reportDir:'/build/jacocoHtml', reportFiles: 'index.html', reportName: 'Code Coverage'])
         }
       }
     }
