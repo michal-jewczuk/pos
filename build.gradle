@@ -35,6 +35,6 @@ subprojects {
 	}
 
 	task deployToDev (dependsOn: check) {
-		printf 'Running gradle task deployToDev'
+		println "Running gradle task deployToDev for ${project.name} "
 	}
 }

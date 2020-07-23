@@ -27,11 +27,15 @@ pipeline {
 
         stage('Deploy to dev') {
             steps {
-                echo 'Deploying to dev'
+                echo "Deploying to dev on ${getBranchName}"
                 sh './gradlew deployToDev'
             }
         }
 
     }
 
+}
+
+def getBranchName() {
+    env.BRANCH_NAME
 }
