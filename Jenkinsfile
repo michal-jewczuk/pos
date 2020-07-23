@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy to dev') {
             when {
                 expression {
-                    getBranchType() === "develop"
+                    return getBranchType() == "develop";
                 }
             }
             steps {
