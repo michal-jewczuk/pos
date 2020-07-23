@@ -48,11 +48,11 @@ def getBranchName() {
 def getBranchType() {
     def branchName = getBranchName()
 
-    if (branchName.startsWith("feature") {
+    if (branchName.startsWith("feature")) {
         return "feature"
-    } else if (branchName.startsWith("release") {
+    } else if (branchName.startsWith("release")) {
         return "release"
-    } else if (branchName.startsWith("develop") {
+    } else if (branchName.startsWith("develop")) {
         return "develop"
     } else {
         return "unrecognized"
