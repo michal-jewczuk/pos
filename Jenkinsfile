@@ -25,6 +25,13 @@ pipeline {
             }
         }
 
+        stage('Deploy to dev') {
+            steps {
+                echo 'Deploying to dev'
+                sh './gradlew deployToDev'
+            }
+        }
+
     }
 
 }

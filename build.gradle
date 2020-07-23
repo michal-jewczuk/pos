@@ -33,4 +33,8 @@ subprojects {
 	test {
 		useJUnitPlatform()
 	}
+
+	task deployToDev (dependsOn: check) {
+		printf 'Running gradle task deployToDev'
+	}
 }
