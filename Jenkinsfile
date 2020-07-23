@@ -26,6 +26,11 @@ pipeline {
         }
 
         stage('Deploy to dev') {
+            when {
+                expression {
+                    getBranchType() === "develop"
+                }
+            }
             steps {
                 echo "Deploying to dev on ${getBranchName()}"
                 sh './gradlew deployToDev'
@@ -38,4 +43,18 @@ pipeline {
 
 def getBranchName() {
     env.BRANCH_NAME
+}
+
+def getBranchType() {
+    def branchName = getBranchName()
+
+    if (branchName.startsWith("feature") {
+        return "feature"
+    } else if (branchName.startsWith("release") {
+        return "release"
+    } else if (branchName.startsWith("develop") {
+        return "develop"
+    } else {
+        return "unrecognized"
+    }
 }
