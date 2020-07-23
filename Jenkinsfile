@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy to dev') {
             steps {
-                echo "Deploying to dev on ${getBranchName}"
+                echo "Deploying to dev on ${getBranchName()}"
                 sh './gradlew deployToDev'
             }
         }
