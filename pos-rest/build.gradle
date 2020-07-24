@@ -10,3 +10,7 @@ dependencies {
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 
 }
+
+bootJar {
+    archiveVersion = "$projVersion-$projType"
+}
