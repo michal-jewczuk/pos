@@ -6,7 +6,7 @@ pipeline {
         stage('Clean & Compile') {
             steps {
                 echo 'Cleaning and compiling'
-                sh './gradlew clean classes'
+                sh './gradlew clean bootJar'
             }
 
             post {
