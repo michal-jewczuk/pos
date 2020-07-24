@@ -37,6 +37,18 @@ pipeline {
             }
         }
 
+        stage('Deploy to production') {
+            when {
+                expression {
+                    return getBranchType() == "master"
+                }
+            }
+            steps {
+                echo "Deploying to production on ${getBranchName()}"
+                sh './deploy_to_prod.sh'
+            }
+        }
+
     }
 
 }
