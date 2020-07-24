@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy to production') {
             when {
                 expression {
-                    return getBranchType() == "unrecognized"
+                    return getBranchType() == "release"
                 }
             }
             steps {
