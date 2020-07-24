@@ -8,6 +8,12 @@ pipeline {
                 echo 'Cleaning and compiling'
                 sh './gradlew clean classes'
             }
+
+            post {
+                always {
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                }
+            }
         }
 
         stage('Tests') {
