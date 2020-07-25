@@ -12,5 +12,10 @@ dependencies {
 }
 
 bootJar {
-    archiveVersion = "$projVersion-$projType"
+    if (project.hasProperty('jarType')) {
+        archiveClassifier=project.property('jarType')
+    } else {
+        archiveClassifier="$jarDefaultType"
+    }
 }
+

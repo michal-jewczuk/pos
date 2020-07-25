@@ -6,7 +6,7 @@ pipeline {
         stage('Clean & Compile') {
             steps {
                 echo 'Cleaning and compiling'
-                sh './gradlew clean bootJar'
+                sh "./gradlew clean bootJar -PjarType=$getJarType()"
             }
 
             post {
@@ -75,4 +75,14 @@ def getBranchType() {
     } else {
         return "unrecognized"
     }
+}
+
+def getJarType() {
+    def branchType = getBranchType()
+
+    if (branchType == 'release') {
+        return 'RELEASE'
+    }
+
+    return 'SNAPSHOT'
 }

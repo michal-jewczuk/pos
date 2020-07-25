@@ -6,12 +6,12 @@ subprojects {
 	group = projGroup
 	version = projVersion
 
-	ext {
-		projType = "SNAPSHOT"
-	}
-
 	sourceCompatibility = theSourceCompatibility
 	targetCompatibility = theSourceCompatibility
+
+	ext {
+		jarDefaultType = ''
+	}
 
 	configurations {
 		compileOnly {
@@ -36,10 +36,6 @@ subprojects {
 
 	test {
 		useJUnitPlatform()
-	}
-
-	jar {
-		archiveVersion = "$projVersion-$projType"
 	}
 
 	task deployToDev (dependsOn: check) {
