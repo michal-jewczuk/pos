@@ -22,7 +22,7 @@ public class ProductRepositoryTest {
     @Test
     @DisplayName("should return products that have given category")
     public void shouldReturnNonEmptyList() {
-        String category = "red";
+        String category = "yellow";
 
         List<Product> products = repository.findAllProductsByCategoryName(category);
 
