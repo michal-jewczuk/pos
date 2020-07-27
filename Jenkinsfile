@@ -12,7 +12,6 @@ pipeline {
             post {
                 always {
                     archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
-                    stash includes: '**/build/libs/*.jar', name: 'archived'
                 }
             }
         }
@@ -33,17 +32,13 @@ pipeline {
         }
 
         stage('Deploy to dev') {
-            environment {
-                ARCHIVE_NAME = ''
-            }
             when {
                 expression {
                     return getBranchType() == "develop";
                 }
             }
             steps {
-                ARCHIVE_NAME = unstash 'archived'
-                echo "Deploying to dev on ${getBranchName()} for ${ARCHIVE_NAME}"
+                echo "Deploying to dev on ${getBranchName()}"
                 sh './gradlew deployToDev'
             }
         }
