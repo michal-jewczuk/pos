@@ -34,7 +34,7 @@ pipeline {
 
         stage('Deploy to dev') {
             environment {
-                ARCHIVE_NAME = ''
+                ARCHIVE_NAME = unstash 'archived'
             }
             when {
                 expression {
@@ -42,7 +42,6 @@ pipeline {
                 }
             }
             steps {
-                ARCHIVE_NAME = unstash 'archived'
                 echo "Deploying to dev on ${getBranchName()} for ${ARCHIVE_NAME}"
                 sh './gradlew deployToDev'
             }
