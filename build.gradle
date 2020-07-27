@@ -10,7 +10,7 @@ subprojects {
 	targetCompatibility = theSourceCompatibility
 
 	ext {
-		jarDefaultType = ''
+		jarDefaultType = 'TEST'
 	}
 
 	configurations {
@@ -40,6 +40,5 @@ subprojects {
 
 	task deployToDev (dependsOn: check) {
 		println "Running gradle task deployToDev for ${project.name}"
-		println "Deploying file ${jar.getArchiveFileName()}"
 	}
 }
