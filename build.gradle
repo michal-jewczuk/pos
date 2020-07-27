@@ -39,6 +39,7 @@ subprojects {
 	}
 
 	task deployToDev (dependsOn: check) {
-		println "Running gradle task deployToDev for ${project.name} "
+		println "Running gradle task deployToDev for ${project.name}"
+		println "Deploying file ${jar.archiveBaseName}"
 	}
 }
