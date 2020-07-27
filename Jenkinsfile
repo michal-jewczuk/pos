@@ -12,6 +12,7 @@ pipeline {
             post {
                 always {
                     archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
+                    stash includes: '**/build/libs/*.jar', name: 'archived'
                 }
             }
         }
@@ -38,6 +39,8 @@ pipeline {
                 }
             }
             steps {
+                unstash 'archived'
+                sh 'ls | grep ".jar"'
                 echo "Deploying to dev on ${getBranchName()}"
                 sh './gradlew deployToDev'
             }
