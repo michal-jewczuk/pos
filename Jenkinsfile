@@ -33,15 +33,17 @@ pipeline {
         }
 
         stage('Deploy to dev') {
+            environment {
+                ARCHIVE_NAME = ''
+            }
             when {
                 expression {
                     return getBranchType() == "develop";
                 }
             }
             steps {
-                unstash 'archived'
-                sh 'ls | grep ".jar"'
-                echo "Deploying to dev on ${getBranchName()}"
+                ARCHIVE_NAME = unstash 'archived'
+                echo "Deploying to dev on ${getBranchName()} for ${ARCHIVE_NAME}"
                 sh './gradlew deployToDev'
             }
         }
