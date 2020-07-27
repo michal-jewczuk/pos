@@ -5,8 +5,9 @@ pipeline {
     stages {
         stage('Clean & Compile') {
             steps {
+                def jarType = getJarType()
                 echo 'Cleaning and compiling'
-                sh "./gradlew clean bootJar -PjarType=$getJarType()"
+                sh "./gradlew clean bootJar -PjarType=${getJarType()}"
             }
 
             post {
