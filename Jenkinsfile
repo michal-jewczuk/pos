@@ -39,7 +39,7 @@ pipeline {
             }
             steps {
                 echo "Deploying to dev on ${getBranchName()}"
-                sh './gradlew deployToDev'
+                sh './deploy_to_dev.sh'
             }
         }
 

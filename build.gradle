@@ -38,7 +38,4 @@ subprojects {
 		useJUnitPlatform()
 	}
 
-	task deployToDev (dependsOn: check) {
-		println "Running gradle task deployToDev for ${project.name}"
-	}
 }
