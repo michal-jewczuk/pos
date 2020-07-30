@@ -31,19 +31,23 @@ pipeline {
             }
         }
 
-        stage('Deploy to dev') {
+        stage('Promotion to dev') {
             when {
-                anyOf {
-                    expression { return getBranchType() == "develop";}
-                    allOf {
-                        beforeInput true
-                        expression { return getBranchType() == "feature";}
-                    }
-                }
+                beforeInput true
+                expression { return getBranchType() == "feature";}
             }
             input {
                 message "May I proceed and deploy to dev this feature build?"
                 ok "Yes, you may!"
+            }
+        }
+
+        stage('Deploy to dev') {
+            when {
+                anyOf {
+                    expression { return getBranchType() == "develop";}
+                    expression { return getBranchType() == "feature";}
+                }
             }
             steps {
                 echo "Deploying to dev on ${getBranchName()}"
