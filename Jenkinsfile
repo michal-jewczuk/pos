@@ -31,9 +31,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to dev') {
+        stage('Promotion to dev') {
             parallel {
-                stage('develop') {
+                stage('From develop branch') {
                     when {
                         expression { return getBranchType() == "develop";}
                     }
@@ -42,7 +42,7 @@ pipeline {
                         sh './deploy_to_dev.sh'
                     }
                 }
-                stage('feature') {
+                stage('From feature branch') {
                     when {
                         beforeInput true
                         expression { return getBranchType() == "feature";}
