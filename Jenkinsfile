@@ -31,28 +31,33 @@ pipeline {
             }
         }
 
-        stage('Promotion to dev') {
-            when {
-                beforeInput true
-                expression { return getBranchType() == "feature";}
-            }
-            input {
-                message "May I proceed and deploy to dev this feature build?"
-                ok "Yes, you may!"
-            }
-        }
-
         stage('Deploy to dev') {
-            when {
-                anyOf {
-                    expression { return getBranchType() == "develop";}
-                    expression { return getBranchType() == "feature";}
+            parallel {
+                stage('develop') {
+                    when {
+                        expression { return getBranchType() == "develop";}
+                    }
+                    steps {
+                        echo "Deploying to dev on ${getBranchName()}"
+                        sh './deploy_to_dev.sh'
+                    }
+                }
+                stage('feature') {
+                    when {
+                        beforeInput true
+                        expression { return getBranchType() == "feature";}
+                    }
+                    input {
+                        message "May I proceed and deploy to dev this feature build?"
+                        ok "Yes, you may!"
+                    }
+                    steps {
+                        echo "Deploying to dev on ${getBranchName()}"
+                        sh './deploy_to_dev.sh'
+                    }
                 }
             }
-            steps {
-                echo "Deploying to dev on ${getBranchName()}"
-                sh './deploy_to_dev.sh'
-            }
+
         }
 
         stage('Deploy to production') {
