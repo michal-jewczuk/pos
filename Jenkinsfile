@@ -33,9 +33,17 @@ pipeline {
 
         stage('Deploy to dev') {
             when {
-                expression {
-                    return getBranchType() == "develop";
+                anyOf {
+                    expression { return getBranchType() == "develop";}
+                    allOf {
+                        beforeInput true
+                        expression { return getBranchType() == "feature";}
+                    }
                 }
+            }
+            input {
+                message "May I proceed and deploy to dev this feature build?"
+                ok "Yes, you may!"
             }
             steps {
                 echo "Deploying to dev on ${getBranchName()}"
