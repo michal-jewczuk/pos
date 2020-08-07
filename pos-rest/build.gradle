@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenLocal();
+    }
+    dependencies {
+        classpath 'net.jewczuk:versioning-plugin:1.0'
+    }
+}
+
 plugins {
     id 'java-library'
     id 'org.springframework.boot' version "${springBootVersion}"
