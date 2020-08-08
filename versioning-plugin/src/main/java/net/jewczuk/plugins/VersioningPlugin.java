@@ -1,5 +1,6 @@
 package net.jewczuk.plugins;
 
+import groovy.lang.Closure;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
@@ -9,6 +10,7 @@ public class VersioningPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        project.getTasks().register(PLUGIN_NAME, VersioningTask.class);
+        VersioningTask versioningTask = project.getTasks().create(PLUGIN_NAME, VersioningTask.class);
+        //project.getTasks().register(PLUGIN_NAME, VersioningTask.class);
     }
 }
