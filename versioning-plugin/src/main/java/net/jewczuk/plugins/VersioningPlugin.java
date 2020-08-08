@@ -9,7 +9,6 @@ public class VersioningPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        VersioningTask versioningTask = project.getTasks().create(PLUGIN_NAME, VersioningTask.class);
-        project.getTasks().add(versioningTask);
+        project.getTasks().register(PLUGIN_NAME, VersioningTask.class);
     }
 }

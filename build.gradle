@@ -1,11 +1,10 @@
 subprojects {
-	group = projGroup
-
 	if (it.name != 'versioning-plugin') {
 		apply plugin: 'java'
 		apply plugin: 'jacoco'
 
 		description = 'Playground online shop project'
+		group = projGroup
 		version = projVersion
 
 		sourceCompatibility = theSourceCompatibility

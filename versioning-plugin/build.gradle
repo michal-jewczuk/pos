@@ -4,10 +4,16 @@ plugins {
     id 'maven'
 }
 
-version '1.0'
+version=versioningPluginVersion
+group = 'net.jewczuk.plugins'
 
-dependencies {
-    compileOnly gradleApi()
+gradlePlugin {
+    plugins {
+        demoPlugin {
+            id = 'net.jewczuk.plugins.versioning-plugin'
+            implementationClass = 'net.jewczuk.plugins.VersioningPlugin'
+        }
+    }
 }
 
 uploadArchives {
