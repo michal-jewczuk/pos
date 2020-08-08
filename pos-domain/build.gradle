@@ -1,11 +1,3 @@
 dependencies {
     implementation "javax.persistence:javax.persistence-api:2.2"
 }
-
-jar {
-    if (project.hasProperty('jarType')) {
-        archiveClassifier=project.property('jarType')
-    } else {
-        archiveClassifier="$jarDefaultType"
-    }
-}

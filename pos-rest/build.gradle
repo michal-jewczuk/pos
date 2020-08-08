@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'org.springframework.boot' version "${springBootVersion}"
-    id 'net.jewczuk.plugins.versioning-plugin' version "${versioningPluginVersion}"
 }
 
 dependencies {
@@ -9,14 +8,4 @@ dependencies {
 
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
-
 }
-
-bootJar {
-    if (project.hasProperty('jarType')) {
-        archiveClassifier=project.property('jarType')
-    } else {
-        archiveClassifier="$jarDefaultType"
-    }
-}
-

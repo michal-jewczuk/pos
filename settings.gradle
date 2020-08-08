@@ -1,21 +1,4 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.namespace == 'net.jewczuk.plugins') {
-                useModule("net.jewczuk.plugins:versioning-plugin:${requested.version}")
-            }
-        }
-    }
-}
-
 rootProject.name = 'pos'
 
 include 'pos-domain'
 include 'pos-rest'
-include 'versioning-plugin'
-
