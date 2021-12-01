@@ -4,7 +4,7 @@ public enum Animals {
     CAT {
         @Override
         String makeASound() {
-            return "Miaaaau!";
+            return "Miau!";
         }
     },
     DOG {
